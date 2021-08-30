@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div col-12><img src="images/narrowSky.jpg" id="banner-image" /></div>
+    <div class="container">
+      <div id="current">
+        <div class="row first">
+          <form id="enter-a-city">
+            <input
+              class="col city"
+              type="text"
+              placeholder="Enter a city"
+              autofocus="on"
+              id="searched-city"
+            />
+            <input type="submit" value="Search" />
+          </form>
+          <br />
+          <button type="button" id="location-search">Current Location</button>
+          <span id="city-pop-up"
+            ><strong><!--Current city--></strong></span
+          >
+          <div class="col-4 date-and-time" id="current-day-info">
+            <!--Sunday, August 8th 10:00-->
+          </div>
+          <div class="col-4 current-temp">
+            Currently <span id="current-temp">50</span>
+            <span id="unit-of-temp">
+              <a href="#" id="fahrenheit-link">°F</a>
+              <!--<a href="#" id="celcius-link">°C</a>-->
+            </span>
+          </div>
+          <div class="col current-emoji">🌤</div>
+        </div>
+        <div class="row second">
+          <div class="col rain">No chance of rain</div>
+          <div class="col uv">UV: Extreme 11/10</div>
+          <div class="col current-weather">Mostly Sunny</div>
+          <div class="col current-high-low">
+            <span class="current-high">92</span>°F / <span class="current-low">76</span>°F
+          </div>
+        </div>
+      </div>
+      <div class="row" id="forcast">
+        <!--1 of 5 Forecast-->
+        <div class="card 1of5 col">
+          <div class="card-body">
+            <h5 class="day-date">
+              <strong>Monday</strong> <br />
+              August 9th
+            </h5>
+            <ul class="1of5-forecast">
+              <li class="weather">Partly Cloudy</li>
+              <li class="high-low">High 96°F <br />Low 76°F</li>
+              <li class="rain-uv">
+                No chance of rain <br />
+                UV: Extreme 11/10
+              </li>
+              <li class="emoji">🌤</li>
+            </ul>
+          </div>
+        </div>
+
+        <!--2 of 5 forecast-->
+        <div class="card 2of5 col">
+          <div class="card-body">
+            <h5 class="day-date">
+              <strong>Tuesday</strong> <br />
+              August 10th
+            </h5>
+            <ul class="1of5-forecast">
+              <li class="weather">Mostly Sunny</li>
+              <li class="high-low">High 95°F <br />Low 75°F</li>
+              <li class="rain-uv">
+                No chance of rain <br />
+                UV: Extreme 11/10
+              </li>
+              <li class="emoji">🌤</li>
+            </ul>
+          </div>
+        </div>
+        <!--3 of 5 forecast-->
+        <div class="card 3of5 col">
+          <div class="card-body">
+            <h5 class="day-date">
+              <strong>Wednesday</strong> <br />
+              September 30th
+            </h5>
+            <ul class="1of5-forecast">
+              <li class="weather">Mostly Sunny</li>
+              <li class="high-low">High 95°F <br />Low 75°F</li>
+              <li class="rain-uv">
+                No chance of rain <br />
+                UV: Extreme 11/10
+              </li>
+              <li class="emoji">🌤</li>
+            </ul>
+          </div>
+        </div>
+
+        <!--4 of 5 forecast-->
+        <div class="card 4of5 col">
+          <div class="card-body">
+            <h5 class="day-date">
+              <strong>Thursday</strong> <br />
+              August 12th
+            </h5>
+            <ul class="1of5-forecast">
+              <li class="weather">Partly Cloudy</li>
+              <li class="high-low">High 94°F <br />Low 74°F</li>
+              <li class="rain-uv">
+                No chance of rain <br />
+                UV: Extreme 11/10
+              </li>
+              <li class="emoji">🌤</li>
+            </ul>
+          </div>
+        </div>
+
+        <!--5 of 5 forecast-->
+        <div class="card 5of5 col">
+          <div class="card-body">
+            <h5 class="day-date">
+              <strong>Friday</strong> <br />
+              August 13th
+            </h5>
+            <ul class="1of5-forecast">
+              <li class="weather">Partly Cloudy</li>
+              <li class="high-low">High 93°F <br />Low 74°F</li>
+              <li class="rain-uv">
+                No chance of rain <br />
+                UV: Extreme 11/10
+              </li>
+              <li class="emoji">🌤</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="style/index.js"></script>
+  </body>
+</html>
