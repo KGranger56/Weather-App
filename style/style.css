@@ -69,8 +69,22 @@
 }
 
 #forcast {
-  display: flex;
   padding-top: 25%;
+}
+
+.github-link {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+  display: block;
+  margin: 15px 20px;
+  text-align: center;
+  transition: all 200ms ease-in-out;
+  top: -96%;
+}
+
+.github-link:hover {
+  color: purple;
 }
 
 .high-low {

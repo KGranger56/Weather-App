@@ -108,7 +108,6 @@ function getCurrentTemp(response) {
 function getCurrentCity(response) {
   let currentCityLocation = response.data.name;
   searchedCityName.innerHTML = `Currently in ${currentCityLocation}`;
-  //console.log(currentCityLocation);
 }
 
 //let fahrenheit = document.querySelector("#fahrenheit-link");
@@ -116,3 +115,8 @@ function getCurrentCity(response) {
 
 //let celcius = document.querySelector("#celcius-link");
 //celcius.addEventListener("click", celciusChange);
+
+//Submit your Netlify URL linking to your project.
+//Include a link to your GitHub repository at the bottom of your project page.
+//The project doesn't have to be fully functional but it should look exactly the
+//same as when opening it on your local computer.
