@@ -40,6 +40,7 @@ enterCity.addEventListener("submit", citySearch);
 let searchedCityName = document.querySelector("span");
 
 //Functions
+//Typing in a city
 function citySearch(event) {
   event.preventDefault();
   let currentCity = document.querySelector("#searched-city");
@@ -48,6 +49,32 @@ function citySearch(event) {
   axios.get(apiUrl).then(showTemperature);
   axios.get(apiUrl).then(getMin);
   axios.get(apiUrl).then(getMax);
+  axios.get(apiUrl).then(currentWeather);
+}
+
+//Current location button
+function handlePosition(position) {
+  document.getElementById("enter-a-city").reset();
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(getCurrentTemp);
+  axios.get(apiUrl).then(getCurrentCity);
+  axios.get(apiUrl).then(getMin);
+  axios.get(apiUrl).then(getMax);
+  axios.get(apiUrl).then(currentWeather);
+}
+
+function currentWeather(response) {
+  let currentWeather = response.data.weather[0].description;
+  let realWeather = document.querySelector("div.col.current-weather");
+  realWeather.innerHTML = `${currentWeather}`;
+  let weatherIcon = response.data.weather[0].icon;
+  let currentEmoji = document.querySelector("img.weather-icon");
+  currentEmoji.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+  );
 }
 
 function showTemperature(response) {
@@ -86,19 +113,6 @@ function findCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
 
-function handlePosition(position) {
-  console.log(position);
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  console.log(lat);
-  console.log(lon);
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(getCurrentTemp);
-  axios.get(apiUrl).then(getCurrentCity);
-  axios.get(apiUrl).then(getMin);
-  axios.get(apiUrl).then(getMax);
-}
-
 function getCurrentTemp(response) {
   let currentTemp = Math.round(response.data.main.temp);
   let realTimeTemp = document.querySelector("#current-temp");
@@ -115,8 +129,3 @@ function getCurrentCity(response) {
 
 //let celcius = document.querySelector("#celcius-link");
 //celcius.addEventListener("click", celciusChange);
-
-//Submit your Netlify URL linking to your project.
-//Include a link to your GitHub repository at the bottom of your project page.
-//The project doesn't have to be fully functional but it should look exactly the
-//same as when opening it on your local computer.
