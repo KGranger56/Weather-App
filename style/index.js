@@ -37,7 +37,7 @@ let currentCity = document.querySelector("#searched-city");
 let currentLow = document.querySelector("span.current-low");
 let currentHigh = document.querySelector("span.current-high");
 let currentTemp = document.querySelector("#current-temp");
-let currentDescription = document.querySelector("div.col.current-description");
+let currentDescription = document.querySelector("#current-description");
 let currentEmoji = document.querySelector("img.weather-icon");
 let currentWind = document.querySelector("#current-wind");
 let currentHumidity = document.querySelector("#current-humidity");
@@ -76,10 +76,6 @@ function findCurrentLocation(event) {
 
 // combine all functions.
 function updateWeather(response) {
-  console.log(response);
-  console.log(response.data.main.humidity);
-  console.log(response.data.wind.speed);
-
   let nowTemp = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${nowTemp}`;
 
