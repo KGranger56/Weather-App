@@ -76,7 +76,7 @@ function findCurrentLocation(event) {
 
 // combine all functions.
 function updateWeather(response) {
-  let nowTemp = Math.round(response.data.main.temp);
+  var nowTemp = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${nowTemp}`;
 
   let minTemp = Math.round(response.data.main.temp_min);
@@ -101,23 +101,29 @@ function updateWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
+
+  fahrenheitCurrentTemp = Math.round(response.data.main.temp);
 }
 
 function fahrenheitChange(event) {
   event.preventDefault();
-  fahrenheitUpdate.innerHTML = "100";
+  let fahrenheitTemp = fahrenheitCurrentTemp;
+  document.querySelector("#current-temp").innerHTML = `${fahrenheitTemp}`;
 }
 
 function celciusChange(event) {
   event.preventDefault();
-  celciusUpdate.innerHTML = "37";
+  let celciusTemp = Math.round(((fahrenheitCurrentTemp - 32) * 5) / 9);
+  document.querySelector("#current-temp").innerHTML = `${celciusTemp}`;
 }
 
-//let fahrenheit = document.querySelector("#fahrenheit-link");
-//fahrenheit.addEventListener("click", fahrenheitChange);
+let fahrenheitCurrentTemp = null;
 
-//let celcius = document.querySelector("#celcius-link");
-//celcius.addEventListener("click", celciusChange);
+let fahrenheit = document.querySelector("#fahrenheit-link");
+fahrenheit.addEventListener("click", fahrenheitChange);
+
+let celcius = document.querySelector("#celcius-link");
+celcius.addEventListener("click", celciusChange);
 
 //Improve the project including the
 //search engine,
