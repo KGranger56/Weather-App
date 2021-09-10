@@ -16,7 +16,7 @@
 }
 
 #city-pop-up {
-  position: fixed;
+  position: absolute;
   font-size: 58px;
   color: blueviolet;
   top: 27%;
@@ -38,13 +38,13 @@
 .current-emoji {
   display: block;
   font-size: 500%;
-  position: fixed;
-  right: -65%;
+  position: absolute;
+  right: -68;
   top: 16%;
 }
 
 .current-temp {
-  position: fixed;
+  position: absolute;
   right: 27%;
   top: 36%;
 }
@@ -55,7 +55,7 @@
 }
 
 .date-and-time {
-  position: fixed;
+  position: absolute;
   top: 36%;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .second {
-  position: fixed;
+  position: absolute;
   top: 40%;
 }
 
