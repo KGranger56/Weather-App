@@ -31,24 +31,20 @@ let units = "imperial";
 let currentDayInfo = document.querySelector("#current-day-info");
 currentDayInfo.innerHTML = `${day} ${hour}:${minutes}`;
 
-let searchedCityName = document.querySelector("span");
+let searchedCityName = document.querySelector("#city");
 let currentCity = document.querySelector("#searched-city");
 
-let currentLow = document.querySelector("span.current-low");
-let currentHigh = document.querySelector("span.current-high");
+let currentLow = document.querySelector("span#current-low");
+let currentHigh = document.querySelector("span#current-high");
 let currentTemp = document.querySelector("#current-temp");
 let currentDescription = document.querySelector("#current-description");
-let currentEmoji = document.querySelector("img.weather-icon");
-let currentWind = document.querySelector("#current-wind");
-let currentHumidity = document.querySelector("#current-humidity");
+let currentEmoji = document.querySelector("#current-emoji");
+let currentWind = document.querySelector("span#current-wind");
+let currentHumidity = document.querySelector("span#current-humidity");
 
 //Typing in a city
 let enterCity = document.querySelector("#enter-a-city");
 enterCity.addEventListener("submit", citySearch);
-
-//Current location button
-let locationSearch = document.querySelector("#location-button");
-locationSearch.addEventListener("click", findCurrentLocation);
 
 //Functions
 //Typing in a city
@@ -59,7 +55,7 @@ function citySearch(event) {
   axios.get(apiUrl).then(updateWeather);
 }
 
-//Current location button
+//Current location
 function handlePosition(position) {
   document.getElementById("enter-a-city").reset();
   let lat = position.coords.latitude;
@@ -69,8 +65,7 @@ function handlePosition(position) {
 }
 
 //location request
-function findCurrentLocation(event) {
-  event.preventDefault();
+function findCurrentLocation() {
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
 
@@ -96,6 +91,7 @@ function updateWeather(response) {
 
   let currentWeather = response.data.weather[0].description;
   currentDescription.innerHTML = `${currentWeather}`;
+
   let weatherIcon = response.data.weather[0].icon;
   currentEmoji.setAttribute(
     "src",
@@ -103,18 +99,24 @@ function updateWeather(response) {
   );
 
   fahrenheitCurrentTemp = Math.round(response.data.main.temp);
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
 }
 
 function fahrenheitChange(event) {
   event.preventDefault();
   let fahrenheitTemp = fahrenheitCurrentTemp;
   document.querySelector("#current-temp").innerHTML = `${fahrenheitTemp}`;
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
 }
 
 function celciusChange(event) {
   event.preventDefault();
   let celciusTemp = Math.round(((fahrenheitCurrentTemp - 32) * 5) / 9);
   document.querySelector("#current-temp").innerHTML = `${celciusTemp}`;
+  celcius.classList.add("active");
+  fahrenheit.classList.remove("active");
 }
 
 let fahrenheitCurrentTemp = null;
@@ -124,6 +126,8 @@ fahrenheit.addEventListener("click", fahrenheitChange);
 
 let celcius = document.querySelector("#celcius-link");
 celcius.addEventListener("click", celciusChange);
+
+findCurrentLocation();
 
 //Improve the project including the
 //search engine,

@@ -25,42 +25,56 @@
               type="text"
               placeholder="Enter a city"
               autofocus="on"
+              autocomplete="off"
               id="searched-city"
             />
             <input type="submit" value="Search" />
           </form>
           <br />
-          <button type="button" id="location-button">Current Location</button>
-          <span id="city-pop-up"
-            ><strong><!--Current city--></strong></span
-          >
-          <div class="col-4 date-and-time" id="current-day-info">
-            <!--Sunday, August 8th 10:00-->
+          <div class="overview">
+            <h1 id="city">City name goes here</h1>
+            <ul>
+              <li>
+                Last updated:
+                <span class="date-and-time col-4" id="current-day-info"></span>
+              </li>
+              <li id="current-description">Mostly Sunny</li>
+            </ul>
           </div>
-          <div class="col-4 current-temp">
-            Currently <span id="current-temp">50</span>
-            <span id="unit-of-temp">
-              <a href="#" id="fahrenheit-link">°F</a>
-              <a href="#" id="celcius-link">°C</a>
-            </span>
-          </div>
-          <div class="col current-emoji">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="weather"
-              class="weather-icon"
-            />
-          </div>
-        </div>
-        <div class="row second">
-          <div class="col rain">Humidity: <span id="current-humidity">15</span>%</div>
-          <div class="col wind">Wind: <span id="current-wind">10</span> mph</div>
-          <div class="col" id="current-description">Mostly Sunny</div>
-          <div class="col current-high-low">
-            <span class="current-high">92</span>°F / <span class="current-low">76</span>°F
+          <!--not ligning up next to emoji-->
+          <div class="row">
+            <div class="col-4">
+              <div class="clearfix weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  alt="Clear"
+                  id="current-emoji"
+                  class="float-left"
+                />
+                <strong id="current-temp">50</strong>
+                <span id="unit-of-temp">
+                  <a href="#" id="fahrenheit-link" class="active">°F</a>
+                  <a href="#" id="celcius-link">°C</a>
+                </span>
+              </div>
+            </div>
+            <!--New section-->
+            <div class="col-4">
+              <ul>
+                <li>High: <span id="current-high">15</span></li>
+                <li>Low: <span id="current-low">10</span></li>
+              </ul>
+            </div>
+            <div class="col-4">
+              <ul>
+                <li>Humidity: <span id="current-humidity">15</span>%</li>
+                <li>Wind: <span id="current-wind">10</span> mph</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="row" id="forcast">
         <!--1 of 5 Forecast-->
         <div class="card 1of5 col">

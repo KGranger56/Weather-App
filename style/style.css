@@ -7,56 +7,48 @@
   max-height: 7%;
 }
 
+.active {
+  font-weight: bold;
+  font-size: 22px;
+}
+
 .card {
   padding: 0%;
+  text-align: left;
 }
 
 .card-body {
   padding-left: 8%;
 }
 
-#city-pop-up {
-  position: fixed;
-  font-size: 58px;
-  color: blueviolet;
-  top: 27%;
+#city {
+  color: #202124;
+  font-size: 22px;
+  line-height: 26px;
 }
 
 .container {
   max-width: 800px;
-  display: block;
-  left: 0%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
-#current {
-  font-size: 27px;
-  margin-top: 10px;
-  flex-direction: row;
-  max-width: 800px;
+#current-description:first-letter {
+  text-transform: capitalize;
 }
 
-.current-emoji {
-  display: block;
-  font-size: 500%;
-  position: fixed;
-  right: -65%;
-  top: 16%;
-}
-
-.current-temp {
-  position: fixed;
-  right: 27%;
-  top: 36%;
+#current-temp {
+  font-size: 78px;
+  line-height: 60px;
+  font-weight: normal;
+  vertical-align: top;
 }
 
 .day-date {
   padding-left: 0%;
   font-size: 17px;
-}
-
-.date-and-time {
-  position: fixed;
-  top: 36%;
 }
 
 .emoji {
@@ -69,18 +61,20 @@
 }
 
 #forcast {
-  padding-top: 25%;
+  position: relative;
+  top: 29px;
+  padding-top: 2%;
 }
 
 .github-link {
   text-decoration: none;
   font-size: 22px;
   color: black;
-  display: block;
   margin: 15px 20px;
   text-align: center;
   transition: all 200ms ease-in-out;
-  top: -96%;
+  position: relative;
+  top: 65px;
 }
 
 .github-link:hover {
@@ -92,25 +86,8 @@
   font-weight: 600;
 }
 
-#location-button {
-  display: block;
-  margin: 0% auto;
-  margin-left: 1.4%;
-  padding: 0.5%;
-  max-width: 27%;
-}
-
-.row {
-  top: 0%;
-}
-
 .rain-uv {
   font-size: 15px;
-}
-
-.second {
-  position: fixed;
-  top: 40%;
 }
 
 .weather {
@@ -125,4 +102,8 @@ ul {
 #fahrenheit-link,
 #celcius-link {
   text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  color: #202124;
+  vertical-align: top;
 }
