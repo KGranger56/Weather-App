@@ -50,12 +50,26 @@ enterCity.addEventListener("submit", citySearch);
 //Typing in a city
 function citySearch(event) {
   event.preventDefault();
-  searchedCityName.innerHTML = `Currently in ${currentCity.value}`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(updateWeather);
+  if (/\d/.test(currentCity.value)) {
+    alert("Enter a city name. ");
+    document.getElementById("enter-a-city").reset();
+  } else {
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&units=${units}&appid=${apiKey}`;
+    axios
+      .get(apiUrl)
+      .then(updateWeather)
+      .catch((error) => {
+        alert(error.response.data.message);
+        document.getElementById("enter-a-city").reset();
+        city.innerHTML = ``;
+      });
+    if (typeof error === "undefined") {
+      searchedCityName.innerHTML = `Currently in ${currentCity.value}`;
+    }
+  }
 }
 
-//Current location
+//Current location upon initial page load
 function handlePosition(position) {
   document.getElementById("enter-a-city").reset();
   let lat = position.coords.latitude;
@@ -87,7 +101,8 @@ function updateWeather(response) {
   currentWind.innerHTML = `${windSpeed}`;
 
   let currentCityLocation = response.data.name;
-  searchedCityName.innerHTML = `Currently in ${currentCityLocation}`;
+  let country = response.data.sys.country;
+  searchedCityName.innerHTML = `Currently in ${currentCityLocation}, ${country}`;
 
   let currentWeather = response.data.weather[0].description;
   currentDescription.innerHTML = `${currentWeather}`;
