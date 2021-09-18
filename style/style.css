@@ -3,22 +3,8 @@
   margin: 0% auto;
   border: 1px solid #fff;
   border-radius: 10px;
-  max-width: 800px;
+  max-width: 600px;
   max-height: 7%;
-}
-
-.active {
-  font-weight: bold;
-  font-size: 22px;
-}
-
-.card {
-  padding: 0%;
-  text-align: left;
-}
-
-.card-body {
-  padding-left: 8%;
 }
 
 #city {
@@ -26,13 +12,20 @@
   font-size: 22px;
   line-height: 26px;
 }
+.col-2 {
+  text-align: center;
+}
 
 .container {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+}
+
+.current,
+ul.current {
+  padding-left: 0%;
 }
 
 #current-description:first-letter {
@@ -40,70 +33,75 @@
 }
 
 #current-temp {
-  font-size: 78px;
-  line-height: 60px;
-  font-weight: normal;
-  vertical-align: top;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+#high,
+#low,
+#humidity,
+#wind {
+  position: relative;
+  font-size: 16px;
+  top: 19px;
 }
 
 .day-date {
-  padding-left: 0%;
-  font-size: 17px;
+  text-align: center;
 }
 
-.emoji {
-  max-width: 800px;
-  display: flex;
-  font-size: 38px;
-  position: relative;
-  right: -61%;
-  top: -96px;
+#forecast-high,
+#forecast-low {
+  text-align: center;
+  font-size: 13px;
+  color: black;
 }
 
-#forcast {
-  position: relative;
-  top: 29px;
-  padding-top: 2%;
+#forecast-low {
+  color: #70757a;
+}
+
+.github {
+  max-width: 600px;
+  text-align: center;
+  display: block;
+  margin: 0% auto;
 }
 
 .github-link {
   text-decoration: none;
-  font-size: 22px;
+  font-size: 16px;
   color: black;
-  margin: 15px 20px;
   text-align: center;
   transition: all 200ms ease-in-out;
-  position: relative;
-  top: 65px;
 }
 
 .github-link:hover {
   color: purple;
 }
 
-.high-low {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.rain-uv {
-  font-size: 15px;
-}
-
-.weather {
-  font-size: 18px;
-}
-
 ul {
   list-style-type: none;
-  padding-left: 0%;
+  margin: 0;
+  padding: 0;
 }
 
-#fahrenheit-link,
-#celcius-link {
-  text-decoration: none;
+ul.forecast {
+  text-align: center;
+}
+
+#unit-of-temp {
+  position: relative;
   font-size: 16px;
-  line-height: 24px;
+  top: 19px;
+}
+
+#fahrenheit-link {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
   color: #202124;
-  vertical-align: top;
+  text-decoration: none;
 }

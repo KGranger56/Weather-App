@@ -17,7 +17,7 @@
   <body>
     <div col-12><img src="images/narrowSky.jpg" id="banner-image" /></div>
     <div class="container">
-      <div id="current">
+      <div class="current">
         <div class="row first">
           <form id="enter-a-city">
             <input
@@ -33,17 +33,16 @@
           <br />
           <div class="overview">
             <h1 id="city"></h1>
-            <ul>
+            <ul class="current">
               <li>
                 Last updated:
-                <span class="date-and-time col-4" id="current-day-info"></span>
+                <span class="date-and-time col-6" id="current-day-info"></span>
               </li>
               <li id="current-description">Mostly Sunny</li>
             </ul>
           </div>
-          <!--not ligning up next to emoji-->
-          <div class="row">
-            <div class="col-4">
+          <div class="row currentWeather">
+            <div class="col-5">
               <div class="clearfix weather-temperature">
                 <img
                   src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
@@ -54,131 +53,35 @@
                 <strong id="current-temp">50</strong>
                 <span id="unit-of-temp">
                   <a href="#" id="fahrenheit-link" class="active">°F</a>
-                  <a href="#" id="celcius-link">°C</a>
                 </span>
               </div>
             </div>
-            <!--New section-->
-            <div class="col-4">
+            <div class="col-3">
               <ul>
-                <li>High: <span id="current-high">15</span></li>
-                <li>Low: <span id="current-low">10</span></li>
+                <li id="high">High: <span id="current-high">15</span></li>
+                <li id="low">Low: <span id="current-low">10</span></li>
               </ul>
             </div>
             <div class="col-4">
               <ul>
-                <li>Humidity: <span id="current-humidity">15</span>%</li>
-                <li>Wind: <span id="current-wind">10</span> mph</li>
+                <li id="humidity">Humidity: <span id="current-humidity">15</span>%</li>
+                <li id="wind">Wind: <span id="current-wind">10</span> mph</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="row" id="forcast">
-        <!--1 of 5 Forecast-->
-        <div class="card 1of5 col">
-          <div class="card-body">
-            <h5 class="day-date">
-              <strong>Monday</strong> <br />
-              August 9th
-            </h5>
-            <ul class="1of5-forecast">
-              <li class="weather">Partly Cloudy</li>
-              <li class="high-low">High 96°F <br />Low 76°F</li>
-              <li class="rain-uv">
-                Humidity: <span id="chance-of">15</span>% <br />
-                Wind: <span id="wind-speed">10</span> mph
-              </li>
-              <li class="emoji">🌤</li>
-            </ul>
-          </div>
-        </div>
-
-        <!--2 of 5 forecast-->
-        <div class="card 2of5 col">
-          <div class="card-body">
-            <h5 class="day-date">
-              <strong>Tuesday</strong> <br />
-              August 10th
-            </h5>
-            <ul class="1of5-forecast">
-              <li class="weather">Mostly Sunny</li>
-              <li class="high-low">High 95°F <br />Low 75°F</li>
-              <li class="rain-uv">
-                Humidity: <span id="chance-of">15</span>% <br />
-                Wind: <span id="wind-speed">10</span> mph
-              </li>
-              <li class="emoji">🌤</li>
-            </ul>
-          </div>
-        </div>
-        <!--3 of 5 forecast-->
-        <div class="card 3of5 col">
-          <div class="card-body">
-            <h5 class="day-date">
-              <strong>Wednesday</strong> <br />
-              September 30th
-            </h5>
-            <ul class="1of5-forecast">
-              <li class="weather">Mostly Sunny</li>
-              <li class="high-low">High 95°F <br />Low 75°F</li>
-              <li class="rain-uv">
-                Humidity: <span id="chance-of">15</span>% <br />
-                Wind: <span id="wind-speed">10</span> mph
-              </li>
-              <li class="emoji">🌤</li>
-            </ul>
-          </div>
-        </div>
-
-        <!--4 of 5 forecast-->
-        <div class="card 4of5 col">
-          <div class="card-body">
-            <h5 class="day-date">
-              <strong>Thursday</strong> <br />
-              August 12th
-            </h5>
-            <ul class="1of5-forecast">
-              <li class="weather">Partly Cloudy</li>
-              <li class="high-low">High 94°F <br />Low 74°F</li>
-              <li class="rain-uv">
-                Humidity: <span id="chance-of">15</span>% <br />
-                Wind: <span id="wind-speed">10</span> mph
-              </li>
-              <li class="emoji">🌤</li>
-            </ul>
-          </div>
-        </div>
-
-        <!--5 of 5 forecast-->
-        <div class="card 5of5 col">
-          <div class="card-body">
-            <h5 class="day-date">
-              <strong>Friday</strong> <br />
-              August 13th
-            </h5>
-            <ul class="1of5-forecast">
-              <li class="weather">Partly Cloudy</li>
-              <li class="high-low">High 93°F <br />Low 74°F</li>
-              <li class="rain-uv">
-                Humidity: <span id="chance-of">15</span>% <br />
-                Wind: <span id="wind-speed">10</span> mph
-              </li>
-              <li class="emoji">🌤</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a
-          href="https://github.com/KGranger56/Weather-App"
-          target="_blank"
-          class="github-link"
-        >
-          Github Repository
-        </a>
-      </div>
+      <!--1 of 5 Forecast-->
+      <div id="forecast"></div>
+    </div>
+    <div class="github">
+      <a
+        href="https://github.com/KGranger56/Weather-App"
+        target="_blank"
+        class="github-link"
+      >
+        Github Repository
+      </a>
     </div>
     <script src="style/index.js"></script>
   </body>

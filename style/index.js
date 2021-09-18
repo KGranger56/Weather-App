@@ -25,22 +25,13 @@ let seconds = now.getSeconds();
 let year = now.getFullYear();
 //date info close
 
+let currentCity = document.querySelector("#searched-city");
+let searchedCityName = document.querySelector("#city");
+
 let apiKey = "30e9dd107086e8cc692d0c7add1a109e";
-let units = "imperial";
 
 let currentDayInfo = document.querySelector("#current-day-info");
 currentDayInfo.innerHTML = `${day} ${hour}:${minutes}`;
-
-let searchedCityName = document.querySelector("#city");
-let currentCity = document.querySelector("#searched-city");
-
-let currentLow = document.querySelector("span#current-low");
-let currentHigh = document.querySelector("span#current-high");
-let currentTemp = document.querySelector("#current-temp");
-let currentDescription = document.querySelector("#current-description");
-let currentEmoji = document.querySelector("#current-emoji");
-let currentWind = document.querySelector("span#current-wind");
-let currentHumidity = document.querySelector("span#current-humidity");
 
 //Typing in a city
 let enterCity = document.querySelector("#enter-a-city");
@@ -51,10 +42,10 @@ enterCity.addEventListener("submit", citySearch);
 function citySearch(event) {
   event.preventDefault();
   if (/\d/.test(currentCity.value)) {
-    alert("Enter a city name. ");
+    alert("Enter a city name.");
     document.getElementById("enter-a-city").reset();
   } else {
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&units=${units}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&units=imperial&appid=${apiKey}`;
     axios
       .get(apiUrl)
       .then(updateWeather)
@@ -74,7 +65,7 @@ function handlePosition(position) {
   document.getElementById("enter-a-city").reset();
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   axios.get(apiUrl).then(updateWeather);
 }
 
@@ -83,8 +74,28 @@ function findCurrentLocation() {
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
 
-// combine all functions.
+function getForecast(coords) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=imperial&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function updateWeather(response) {
+  let currentLow = document.querySelector("span#current-low");
+  let currentHigh = document.querySelector("span#current-high");
+  let currentTemp = document.querySelector("#current-temp");
+  let currentDescription = document.querySelector("#current-description");
+  let currentEmoji = document.querySelector("#current-emoji");
+  let currentWind = document.querySelector("span#current-wind");
+  let currentHumidity = document.querySelector("span#current-humidity");
+
   var nowTemp = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${nowTemp}`;
 
@@ -114,44 +125,39 @@ function updateWeather(response) {
   );
 
   fahrenheitCurrentTemp = Math.round(response.data.main.temp);
-  celcius.classList.remove("active");
-  fahrenheit.classList.add("active");
+
+  getForecast(response.data.coord);
 }
 
-function fahrenheitChange(event) {
-  event.preventDefault();
-  let fahrenheitTemp = fahrenheitCurrentTemp;
-  document.querySelector("#current-temp").innerHTML = `${fahrenheitTemp}`;
-  celcius.classList.remove("active");
-  fahrenheit.classList.add("active");
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class = "row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="col-2">
+        <div class="forecast"> ${formatForecastDay(forecastDay.dt)}</div>
+            <img
+              src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+              alt=""
+              width="42"
+            />
+          <div class="forecastTemps">  
+            <span id="forecast-high">${Math.round(forecastDay.temp.max)}°</span>
+            <span id="forecast-low">${Math.round(forecastDay.temp.min)}°</span>    
+        </div>
+      </div>
+    `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
-
-function celciusChange(event) {
-  event.preventDefault();
-  let celciusTemp = Math.round(((fahrenheitCurrentTemp - 32) * 5) / 9);
-  document.querySelector("#current-temp").innerHTML = `${celciusTemp}`;
-  celcius.classList.add("active");
-  fahrenheit.classList.remove("active");
-}
-
-let fahrenheitCurrentTemp = null;
-
-let fahrenheit = document.querySelector("#fahrenheit-link");
-fahrenheit.addEventListener("click", fahrenheitChange);
-
-let celcius = document.querySelector("#celcius-link");
-celcius.addEventListener("click", celciusChange);
 
 findCurrentLocation();
-
-//Improve the project including the
-//search engine,
-//API integration,
-//unit conversion,
-//wind speed,
-//precipitation,
-//weather description,
-//and weather icon
-//temp high
-//temp low
-//are mandatory. The project should not include the forecast yet.
