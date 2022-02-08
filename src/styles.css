@@ -1,31 +1,48 @@
 #banner-image {
-  display: block;
-  margin: 0% auto;
   border: 1px solid #fff;
   border-radius: 10px;
   max-width: 600px;
-  max-height: 7%;
+}
+
+[class^="block-"] {
+  display: flex;
+  gap: 2vh;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+}
+
+[class^="box-"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 100%;
+}
+
+.block-1.box-1 {
+  flex: auto;
+  text-align: left;
+  justify-content: left;
+}
+
+.block-2 {
+  justify-content: left;
+  align-items: left;
 }
 
 #city {
+  margin-top: 11px;
   color: #202124;
   font-size: 22px;
   line-height: 26px;
 }
-.col-2 {
-  text-align: center;
-}
 
 .container {
+  display: flex;
   max-width: 600px;
-  padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 5px;
-}
-
-.current,
-ul.current {
-  padding-left: 0%;
+  flex-direction: column;
 }
 
 #current-description:first-letter {
@@ -36,31 +53,13 @@ ul.current {
   font-size: 64px;
   line-height: 1;
   font-weight: 400;
-  vertical-align: middle;
 }
 
-#high,
-#low,
-#humidity,
-#wind {
+#fahrenheit-link {
   position: relative;
-  font-size: 16px;
-  top: 19px;
-}
-
-.day-date {
-  text-align: center;
-}
-
-#forecast-high,
-#forecast-low {
-  text-align: center;
-  font-size: 13px;
-  color: black;
-}
-
-#forecast-low {
-  color: #70757a;
+  top: -14px;
+  color: #202124;
+  text-decoration: none;
 }
 
 .github {
@@ -88,20 +87,16 @@ ul {
   padding: 0;
 }
 
-ul.forecast {
-  text-align: center;
-}
+@media (max-width: 576px) {
+  .block-2 {
+    flex-direction: column;
+    height: 60vh;
+  }
 
-#unit-of-temp {
-  position: relative;
-  font-size: 16px;
-  top: 19px;
-}
-
-#fahrenheit-link {
-  position: relative;
-  font-size: 16px;
-  top: -34px;
-  color: #202124;
-  text-decoration: none;
+  .box-3 {
+    flex: 80%;
+  }
+  .box-4 {
+    height: 20vh;
+  }
 }

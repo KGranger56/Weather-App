@@ -31,7 +31,7 @@ let searchedCityName = document.querySelector("#city");
 let apiKey = "30e9dd107086e8cc692d0c7add1a109e";
 
 let currentDayInfo = document.querySelector("#current-day-info");
-currentDayInfo.innerHTML = `${day} ${hour}:${minutes}`;
+currentDayInfo.innerHTML = ` ${day} ${hour}:${minutes}`;
 
 //Typing in a city
 let enterCity = document.querySelector("#enter-a-city");
@@ -134,24 +134,28 @@ function displayForecast(response) {
 
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class = "row">`;
+  let forecastHTML = `<div class = "block-5">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 7 && index > 0) {
       forecastHTML =
         forecastHTML +
         `
-      <div class="col-2">
-        <div class="forecast"> ${formatForecastDay(forecastDay.dt)}</div>
-            <img
-              src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+        <div class="box-1">
+          <ul>
+            <li><div> ${formatForecastDay(forecastDay.dt)}</div>
+            <li><img
+                src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png"
               alt=""
               width="42"
-            />
-          <div class="forecastTemps">  
-            <span id="forecast-high">${Math.round(forecastDay.temp.max)}°</span>
-            <span id="forecast-low">${Math.round(forecastDay.temp.min)}°</span>    
+              /></li>
+            <li><div>  
+              <span id="forecast-high">${Math.round(forecastDay.temp.max)}°</span>
+              <span id="forecast-low">${Math.round(forecastDay.temp.min)}°</span>    
+            </div></li>
+          </ul>
         </div>
-      </div>
     `;
     }
   });
