@@ -5,23 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Weather App</title>
+    <title>Weather App Rewrite</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div col-12><img src="images/narrowSky.jpg" id="banner-image" /></div>
     <div class="container">
-      <div class="current">
-        <div class="row first">
+      <div class="block-1"><img src="images/narrowSky.jpg" id="banner-image" /></div>
+
+      <div class="block-2">
+        <div class="box-1">
           <form id="enter-a-city">
             <input
-              class="col city"
               type="text"
               placeholder="Enter a city"
               autofocus="on"
@@ -30,48 +30,44 @@
             />
             <input type="submit" value="Search" />
           </form>
-          <br />
-          <div class="overview">
-            <h1 id="city"></h1>
-            <ul class="current">
-              <li>
-                Last updated:
-                <span class="date-and-time col-6" id="current-day-info"></span>
-              </li>
-              <li id="current-description">Mostly Sunny</li>
-            </ul>
-          </div>
-          <div class="row currentWeather">
-            <div class="col-5">
-              <div class="clearfix weather-temperature">
-                <img
-                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                  alt="Clear"
-                  id="current-emoji"
-                  class="float-left"
-                />
-                <strong id="current-temp">50</strong>
-                <span id="unit-of-temp">
-                  <a href="#" id="fahrenheit-link" class="active">°F</a>
-                </span>
-              </div>
-            </div>
-            <div class="col-3">
-              <ul>
-                <li id="high">High: <span id="current-high">15</span></li>
-                <li id="low">Low: <span id="current-low">10</span></li>
-              </ul>
-            </div>
-            <div class="col-4">
-              <ul>
-                <li id="humidity">Humidity: <span id="current-humidity">15</span>%</li>
-                <li id="wind">Wind: <span id="current-wind">10</span> mph</li>
-              </ul>
-            </div>
-          </div>
+        </div>
+        <div class="box-2">Last updated: <span id="current-day-info"></span></div>
+      </div>
+
+      <div class="block-3">
+        <div class="box-1">
+          <h1 id="city"></h1>
+        </div>
+        <div class="box-2" id="current-description">Clear Sky</div>
+      </div>
+
+      <div class="block-4">
+        <div class="box-1">
+          <img
+            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+            alt="Clear"
+            id="current-emoji"
+          />
+        </div>
+        <div class="box-2">
+          <strong id="current-temp">50</strong>
+          <a href="#" id="fahrenheit-link" class="active">°F</a>
+        </div>
+        <div class="box-3">
+          <ul>
+            <li>High: <span id="current-high">15</span></li>
+            <li>Low: <span id="current-low">10</span></li>
+          </ul>
+        </div>
+        <div class="box-4">
+          <ul>
+            <li>Humidity: <span id="current-humidity">15</span>%</li>
+            <li>Wind: <span id="current-wind">10</span> mph</li>
+          </ul>
         </div>
       </div>
-      <!--1 of 5 Forecast-->
+
+      <!--Forecast-->
       <div id="forecast"></div>
     </div>
     <div class="github">
@@ -83,6 +79,6 @@
         Github Repository
       </a>
     </div>
-    <script src="style/index.js"></script>
+    <script src="src/index.js"></script>
   </body>
 </html>
