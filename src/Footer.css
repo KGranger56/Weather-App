@@ -1,0 +1,18 @@
+.github {
+  max-width: 600px;
+  text-align: center;
+  display: block;
+  margin: 0% auto;
+}
+
+.github-link {
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  transition: all 200ms ease-in-out;
+}
+
+.github-link:hover {
+  color: purple;
+}

@@ -1,3 +1,12 @@
+import React from React;
+// import ReactDOM from "react-dom";
+import App from "./App.css";
+import EnterACity from "./EnterACity";
+import Forecast from "./Forecast";
+import Footer from "./Footer";
+
+
+
 // date info
 let now = new Date();
 
