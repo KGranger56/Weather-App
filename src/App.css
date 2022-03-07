@@ -19,41 +19,12 @@
   flex: 100%;
 }
 
-.block-2 {
-  justify-content: left;
-  align-items: left;
-}
-
-#city {
-  margin-top: 11px;
-  color: #202124;
-  font-size: 22px;
-  line-height: 26px;
-}
-
 .container {
   display: flex;
   max-width: 600px;
   border: 1px solid #dadde1;
   border-radius: 5px;
   flex-direction: column;
-}
-
-#current-description:first-letter {
-  text-transform: capitalize;
-}
-
-#current-temp {
-  font-size: 64px;
-  line-height: 1;
-  font-weight: 400;
-}
-
-#fahrenheit-link {
-  position: relative;
-  top: -14px;
-  color: #202124;
-  text-decoration: none;
 }
 
 ul {

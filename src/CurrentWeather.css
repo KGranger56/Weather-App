@@ -1,0 +1,16 @@
+#current-description:first-letter {
+  text-transform: capitalize;
+}
+
+#current-temp {
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+#fahrenheit-link {
+  position: relative;
+  top: -14px;
+  color: #202124;
+  text-decoration: none;
+}

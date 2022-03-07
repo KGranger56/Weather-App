@@ -1,0 +1,11 @@
+.block-2 {
+  justify-content: left;
+  align-items: left;
+}
+
+#city {
+  margin-top: 11px;
+  color: #202124;
+  font-size: 22px;
+  line-height: 26px;
+}
